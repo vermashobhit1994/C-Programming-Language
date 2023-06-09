@@ -31,7 +31,10 @@ int main()
 	printf("\n\n");
 	fflush(stdin);
 	
-	
+	//deallocate memory for 1D array 
+	//here we only deallocate memory equal to no of elements
+	free(_1DArray);
+	_1DArray = NULL; //avoid dangline pointer problem  
 	
     /*********************************************************************************************/ 
 	
@@ -46,11 +49,34 @@ int main()
 	printf ("Enter no of rows for 2D array :   " );
 	scanf("%d",&rows);
 	
+	/*
+	  eg no of elements = 5 
+	     no  of rows = 2 
+		 
+		 
+		 _2DArray[cols]
+		    ^
+		    |
+		    |
+		 -------------------------------------------   -------------------------------------------
+		|  ---- ---- ---- ---- ---- ---- ---- ----  |  ---- ---- ---- ---- ---- ---- ---- ----    |
+ 		| |    |    |    |     |    |    |   |    | | |    |    |    |     |    |    |   |    |   |     
+		|  ---- ---- ---- ---- ---- ---- ---- ----  |  ---- ---- ---- ---- ---- ---- ---- ----    |
+		 -------------------------------------------   ------------------------------------------- 
+            ^
+            |
+            |
+          _2DArray			
+		 
+	*/
+	
+	
 	//allocate memory for no of rows in 2D array
 	//here each element is pointer to store address of element 
 	int** _2DArray = (int**)calloc(rows, sizeof(int*));
  
 	int cols = no_of_elements/rows;
+	
 	
 	printf("Now enter elements \n");
 	//fill data for 1D array 
@@ -71,6 +97,21 @@ int main()
 			printf("%d, ", _2DArray[i][j]);
 		printf("\n");
 	}
+	
+	
+	//deallocate memory for 2D array 
+	for(int i=0; i < rows; i++)
+	{
+		//deallocate memory for no of columns for each row 
+		free(_2DArray[i]);
+		_2DArray[i] = NULL;
+		
+	}
+	
+	//deallcate memory for all rows
+	free (_2DArray);
+	
+	_2DArray = NULL; //avoid dangline pointer problem  
 	
 	/*********************************************************************************************/ 
 	
