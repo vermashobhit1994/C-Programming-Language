@@ -1,4 +1,4 @@
-Please check README.md in edit view to check actual diagram.
+Please check README.md in edit/code/blame view to check actual diagram.
 
 This directory contains files that implements generic linked list .
 This is implemented using 
