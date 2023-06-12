@@ -1,3 +1,5 @@
+Please check README.md in edit view to check actual diagram.
+
 This directory contains files that implements generic linked list .
 This is implemented using 
 1. Single linked list
